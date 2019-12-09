@@ -14,11 +14,13 @@ import java.util.List;
 public class HelloWorldResource {
     private final String template;
     private final String defaultName;
-     HelloWorldService msv=new HelloWorldService();
+    HelloWorldService msv;
+
 
     public HelloWorldResource(String template, String defaultName) {
         this.template = template;
         this.defaultName = defaultName;
+        this.msv=new HelloWorldService(template);
 
     }
 

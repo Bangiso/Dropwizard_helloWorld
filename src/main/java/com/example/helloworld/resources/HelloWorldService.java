@@ -1,4 +1,5 @@
 package com.example.helloworld.resources;
+import com.example.helloworld.HelloWorldConfiguration;
 import com.example.helloworld.api.Saying;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -8,11 +9,11 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public class HelloWorldService {
     @JsonProperty
-    private  String template="Hello, %s!";
+    private  String template;
     final List<Saying> link=new ArrayList<>();
     public AtomicLong counter =new AtomicLong();
-    public HelloWorldService(){
-
+    public HelloWorldService(String template){
+        this.template=template;
         final String value = String.format(template, "Aphiwe");
         link.add(new Saying(counter.incrementAndGet(), value));
         final String value2 = String.format(template, "Sanele");
