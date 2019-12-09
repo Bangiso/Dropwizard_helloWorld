@@ -30,8 +30,27 @@ public class HelloWorldService {
     public   void addhello(Saying S){
         final String valuev = String.format(template, S.getContent());
         link.add(new Saying(counter.incrementAndGet(), valuev));
+    }
+    public void putHello(int id, Saying S){
+        for(Saying s:link){
+            if(id==s.getId()){
+                final String valuev = String.format(template, S.getContent());
+                s.setContent(valuev);
 
+               }
+
+        }
 
     }
+    public void deleleHello(int id){
+        for(Saying s:link){
+            if(id==s.getId()){
+                link.remove(s);
+            }
+
+        }
+
+    }
+
 
 }

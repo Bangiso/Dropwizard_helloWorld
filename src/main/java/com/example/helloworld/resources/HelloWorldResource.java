@@ -9,35 +9,57 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
 
 @Path("/hello-world")
 public class HelloWorldResource {
     private final String template;
     private final String defaultName;
-    private final AtomicLong counter;
      HelloWorldService msv=new HelloWorldService();
 
     public HelloWorldResource(String template, String defaultName) {
         this.template = template;
         this.defaultName = defaultName;
-        this.counter = msv.counter;
+
     }
-    @Produces(MediaType.APPLICATION_JSON)
+
+
+
     @GET
     @Timed
+    @Produces(MediaType.APPLICATION_JSON)
 
     public  List<Saying> sayHello() {
         return msv.getHellos();
     }
 
-    @Path("/PostHello")
+
     @POST
     @Timed
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response  GetPost(@Context HttpHeaders httpHeaders, Saying say){
+    public Response  postPost(@Context HttpHeaders httpHeaders, Saying say){
           msv.addhello(say);
         return Response.ok().build();
 
     }
+
+    @DELETE
+    @Path("/{id}")
+
+    public Response  deletePost(@PathParam("id") int id, Saying say){
+        msv.deleleHello(id);
+        return Response.ok().build(); }
+
+    @PUT
+    @Path("/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response  putPost(@PathParam("id") int id, Saying say){
+        msv.putHello(id,say);
+        return Response.ok().build();
+
+    }
+
+
+
+
 }
