@@ -8,7 +8,7 @@ $ mvn package
 $java -jar target/HelloWorld-1.0-SNAPSHOT.jar serve hello-world.yml  
 
 
-Once the application is up an running you can use postman UI to make your requests.   
+Once the application is up and running you can use postman UI https://www.getpostman.com/downloads/ to make your requests.   
 
 
 POST json format on the path /hello-world   
@@ -16,7 +16,8 @@ POST json format on the path /hello-world
   "content": John
 }       
 
-DELETE  /hello-world/{id} by id     
+DELETE  on  /hello-world/{id} by id     
+
 
 #NB 
 The application is running on port 8088, if you have another app using this port change this on hello-world.yml.
